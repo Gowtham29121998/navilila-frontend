@@ -1,0 +1,98 @@
+.notfound-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 100px); /* Fill the screen minus the header roughly */
+  background-color: #0f172a;
+  padding: 4rem 2rem;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  gap: 4rem;
+}
+
+.notfound-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.notfound-title {
+  font-size: 8rem;
+  font-weight: 900;
+  margin: 0;
+  background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+
+.notfound-subtitle {
+  font-size: 2.5rem;
+  color: #f8fafc;
+  margin: 1rem 0;
+  font-weight: 700;
+}
+
+.notfound-text {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.notfound-home-btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.notfound-home-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(56, 189, 248, 0.4);
+}
+
+.notfound-image-container {
+  flex: 1;
+  max-width: 500px;
+  position: relative;
+}
+
+.notfound-image {
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  /* Add a smooth floating animation for a slick feel */
+  animation: floatImage 6s ease-in-out infinite;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@keyframes floatImage {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@media (max-width: 900px) {
+  .notfound-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 3rem;
+    padding: 2rem 1.5rem;
+  }
+  
+  .notfound-title {
+    font-size: 6rem;
+  }
+  
+  .notfound-subtitle {
+    font-size: 2rem;
+  }
+}

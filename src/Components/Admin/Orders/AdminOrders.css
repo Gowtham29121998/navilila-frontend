@@ -1,0 +1,307 @@
+.admin-orders-page {
+  min-height: 100vh;
+  background: #0f172a;
+  padding: 40px 5% 80px;
+  color: #f8fafc;
+  font-family: 'Inter', sans-serif;
+}
+
+.admin-orders-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.admin-orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-orders-header h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* Tabs */
+.order-tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.order-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.order-tab {
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.order-tab:hover {
+  color: #f8fafc;
+}
+
+.order-tab.active {
+  color: #38bdf8;
+}
+
+.order-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #38bdf8;
+}
+
+/* Filters */
+.order-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  align-items: flex-end;
+  background: rgba(30, 41, 59, 0.4);
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filter-group input {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  outline: none;
+  font-family: inherit;
+}
+
+/* React DatePicker Overrides */
+.react-datepicker-wrapper {
+  width: auto;
+}
+
+.react-datepicker__input-container input {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  outline: none;
+  font-family: inherit;
+}
+
+.react-datepicker__input-container input:focus {
+  border-color: #38bdf8;
+}
+
+.react-datepicker {
+  background-color: #1e293b !important;
+  border: 1px solid rgba(56, 189, 248, 0.3) !important;
+  color: #f8fafc !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.react-datepicker__header {
+  background-color: #0f172a !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.react-datepicker__current-month {
+  color: #f8fafc !important;
+}
+
+.react-datepicker__day-name {
+  color: #94a3b8 !important;
+}
+
+.react-datepicker__day {
+  color: #e2e8f0 !important;
+}
+
+.react-datepicker__day:hover {
+  background-color: rgba(56, 189, 248, 0.2) !important;
+  border-radius: 50% !important;
+}
+
+.react-datepicker__day--selected, 
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__day--range-start,
+.react-datepicker__day--range-end,
+.react-datepicker__day--selecting-range-start {
+  background-color: #38bdf8 !important;
+  color: #0f172a !important;
+  border-radius: 50% !important;
+  font-weight: bold;
+}
+
+.react-datepicker__day--in-range,
+.react-datepicker__day--in-selecting-range {
+  background-color: rgba(56, 189, 248, 0.2) !important;
+  border-radius: 0 !important;
+  color: #e2e8f0 !important;
+}
+
+.react-datepicker__day--in-range:hover,
+.react-datepicker__day--in-selecting-range:hover {
+  background-color: rgba(56, 189, 248, 0.4) !important;
+}
+
+.filter-clear-btn {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  height: 42px; /* Match input height */
+}
+
+.filter-clear-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+/* Table */
+.orders-table-wrapper {
+  background: rgba(30, 41, 59, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  overflow-x: auto;
+  backdrop-filter: blur(12px);
+}
+
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.orders-table th {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.orders-table tbody tr {
+  transition: background 0.2s;
+}
+
+.orders-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.order-id-cell {
+  font-family: monospace;
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+.order-user-cell div {
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.order-user-cell span {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.order-total-cell {
+  font-weight: 700;
+}
+
+/* Status Badge inside Table */
+.status-badge {
+  display: inline-flex;
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.pending { background: rgba(234, 179, 8, 0.1); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.2); }
+.status-badge.confirmed { background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.2); }
+.status-badge.shipped { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border: 1px solid rgba(139, 92, 246, 0.2); }
+.status-badge.delivered { background: rgba(34, 197, 94, 0.1); color: #22c55e; border: 1px solid rgba(34, 197, 94, 0.2); }
+.status-badge.cancelled { background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.2); }
+
+/* Status Update Select */
+.status-select {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  padding: 0.5rem;
+  border-radius: 6px;
+  outline: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.status-select:focus {
+  border-color: #38bdf8;
+}
+
+.status-select option {
+  background: #0f172a;
+}
+
+.order-items-cell {
+  max-width: 250px;
+}
+
+.order-item-summary {
+  font-size: 0.85rem;
+  color: #e2e8f0;
+  margin-bottom: 4px;
+}
+
+.item-color {
+  color: #38bdf8;
+  font-weight: 600;
+  margin-left: 5px;
+}

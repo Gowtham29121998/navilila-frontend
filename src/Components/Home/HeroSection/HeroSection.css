@@ -1,0 +1,155 @@
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 55vh;
+  /* Adjust as needed */
+  overflow: hidden;
+}
+
+/* Override slick slider default styles to make it fullscreen/cover */
+.slick-slider,
+.slick-list,
+.slick-track {
+  height: 100%;
+}
+
+.slick-slide>div {
+  height: 100%;
+}
+
+.hero-slide {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  outline: none;
+}
+
+.hero-slide-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #0f172a;
+  filter: brightness(0.8);
+  /* Darken image to make text pop */
+  transition: transform 10s ease;
+  /* subtle Ken Burns effect base */
+}
+
+/* Slight zoom effect when slide is active (optional, requires more complex active state logic, 
+   but basic hover or static makes it nice. Let's just keep it still or slightly scaling) */
+.slick-active .hero-slide-bg {
+  transform: scale(1.05);
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  width: 90%;
+  max-width: 800px;
+  z-index: 10;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  /* Optional gradient text */
+  background: linear-gradient(to right, #ffffff, #cbd5e1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  color: #e2e8f0;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(56, 189, 248, 0.4);
+}
+
+/* Custom Slick Line Dots */
+.slick-dots {
+  bottom: 15px;
+  /* Position above bottom */
+}
+
+.slick-dots li {
+  margin: 0 5px;
+  width: 50px;
+  /* Width of the line */
+  height: 4px;
+  /* Height of the line */
+  transition: all 0.3s ease;
+}
+
+.slick-dots li button {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.4);
+  /* Inactive line color */
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.slick-dots li button:before {
+  content: none;
+  /* Remove default circle text/icon */
+}
+
+.slick-dots li.slick-active {
+  width: 80px;
+  /* Make the active line longer */
+}
+
+.slick-dots li.slick-active button {
+  background: #38bdf8;
+  /* Active line color */
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.8);
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+}
+
+.hero-loading {
+  width: 100%;
+  height: 55vh;
+  background: #0f172a;
+}
