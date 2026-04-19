@@ -34,15 +34,17 @@
 
 /* Hero Header */
 .cat-products-header {
-  position: relative;
-  border-radius: 30px;
-  overflow: hidden;
-  margin-bottom: 50px;
-  min-height: 240px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%);
+  border-radius: 20px;
+  padding: 0rem 2rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
-  align-items: flex-end;
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 
 .cat-hero-img-wrapper {
@@ -60,12 +62,10 @@
 .cat-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(15, 23, 42, 0.95) 0%,
-    rgba(15, 23, 42, 0.5) 60%,
-    rgba(15, 23, 42, 0.1) 100%
-  );
+  background: linear-gradient(to top,
+      rgba(15, 23, 42, 0.95) 0%,
+      rgba(15, 23, 42, 0.5) 60%,
+      rgba(15, 23, 42, 0.1) 100%);
 }
 
 .cat-header-content {
@@ -133,7 +133,9 @@
 }
 
 @keyframes catSpin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Empty State */

@@ -22,6 +22,7 @@ import CheckoutPage from './components/Checkout/CheckoutPage';
 import Profile from './components/Profile/Profile';
 import MyOrders from './components/MyOrders/MyOrders';
 import ResetPassword from './components/Auth/ResetPassword';
+import AllProducts from './components/AllProducts/AllProducts';
 
 const AppRouter = () => {
   const { userInfo } = useSelector((state) => state.user);
@@ -39,6 +40,7 @@ const AppRouter = () => {
         <Route path="checkout" element={<CheckoutPage />} />
         <Route path="profile" element={<Profile />} />
         <Route path="my-orders" element={<MyOrders />} />
+        <Route path="all-products" element={<AllProducts />} />
         <Route path="reset-password/:token" element={<ResetPassword />} />
         
         {/* Admin Private Routes */}
@@ -52,6 +54,7 @@ const AppRouter = () => {
           <Route path="settings" element={<AdminSettings />} />
           <Route path="coupons" element={<AdminCoupons />} />
           <Route path="sales" element={<div style={{padding: '2rem', color: 'white'}}>Sales Page (Coming Soon)</div>} />
+          <Route path="*" element={<NotFound />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />

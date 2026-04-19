@@ -1,37 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import api from '../../utils/api';
 import { BackIcon } from '../../assets/images/icons.jsx';
-import './CategoryProducts.css';
-import ProductCard from '../commonComponents/ProductCard/ProductCard.jsx'
+import './AllProducts.css';
+import ProductCard from '../commonComponents/ProductCard/ProductCard.jsx';
 import Pagination from '../commonComponents/Pagination/Pagination.jsx';
 
-const CategoryProducts = () => {
-  const { categoryId } = useParams();
+const AllProducts = () => {
   const navigate = useNavigate();
 
   const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState(null);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [pages, setPages] = useState(1);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProducts = async () => {
       setLoading(true);
       try {
-        const [productsRes, categoriesRes] = await Promise.all([
-          api.get(`/products/category/${categoryId}?pageNumber=${page}&pageSize=10`),
-          api.get('/categories'),
-        ]);
-        setProducts(productsRes.data.products);
-        setPage(productsRes.data.page);
-        setPages(productsRes.data.pages);
-        setTotal(productsRes.data.total);
-        const found = categoriesRes.data.find(c => c._id === categoryId);
-        setCategory(found || null);
+        const { data } = await api.get(`/products?pageNumber=${page}&pageSize=10`);
+        setProducts(data.products);
+        setPage(data.page);
+        setPages(data.pages);
+        setTotal(data.total);
       } catch (err) {
         toast.error('Failed to load products');
       } finally {
@@ -39,8 +32,9 @@ const CategoryProducts = () => {
       }
     };
 
-    if (categoryId) fetchData();
-  }, [categoryId, page]);
+    fetchProducts();
+    window.scrollTo(0, 0);
+  }, [page]);
 
   return (
     <div className="cat-products-container">
@@ -51,16 +45,10 @@ const CategoryProducts = () => {
       </button>
 
       {/* Header */}
-      <div className="cat-products-header">
-        {/* {category?.image?.url && (
-          <div className="cat-hero-img-wrapper">
-            <img src={category.image.url} alt={category.name} className="cat-hero-img" />
-            <div className="cat-hero-overlay" />
-          </div>
-        )} */}
+      <div className="cat-products-header all-prods-header">
         <div className="cat-header-content">
-          <p className="cat-breadcrumb">Shop / {category?.name || 'Category'}</p>
-          <h1 className="cat-title">{category?.name || 'Products'}</h1>
+          <p className="cat-breadcrumb">Shop / All Products</p>
+          <h1 className="cat-title">Our Collection</h1>
           {!loading && (
             <span className="cat-count">{total} Items Available</span>
           )}
@@ -80,9 +68,8 @@ const CategoryProducts = () => {
             <line x1="3" y1="6" x2="21" y2="6" />
             <path d="M16 10a4 4 0 01-8 0" />
           </svg>
-          <h3>No products yet</h3>
-          <p>Products in this category will appear here once added.</p>
-          <button className="cat-back-btn" onClick={() => navigate(-1)}>← Go Back</button>
+          <h3>No products found</h3>
+          <button className="cat-back-btn" onClick={() => navigate('/')}>← Go Home</button>
         </div>
       ) : (
         <>
@@ -98,6 +85,7 @@ const CategoryProducts = () => {
               />
             ))}
           </div>
+
           <Pagination
             page={page}
             pages={pages}
@@ -109,4 +97,4 @@ const CategoryProducts = () => {
   );
 };
 
-export default CategoryProducts;
+export default AllProducts;

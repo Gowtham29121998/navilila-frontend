@@ -353,16 +353,55 @@ const CheckoutPage = () => {
 
               {showForm && (
                 <div className="address-form-card">
+                  <button 
+                    type="button" 
+                    className="checkout-location-btn" 
+                    onClick={handleUseCurrentLocation}
+                    disabled={locLoading}
+                  >
+                    {locLoading ? <span className="loc-spinner"></span> : "📍 Use Current Location"}
+                  </button>
                   <form onSubmit={handleSaveAddress}>
-                    <input name="fullName" value={form.fullName} onChange={handleFormChange} placeholder="Full Name" required />
-                    <input name="phone" value={form.phone} onChange={handleFormChange} placeholder="Phone" required />
-                    <input name="addressLine1" value={form.addressLine1} onChange={handleFormChange} placeholder="Address" required />
-                    <input name="city" value={form.city} onChange={handleFormChange} placeholder="City" required />
-                    <input name="state" value={form.state} onChange={handleFormChange} placeholder="State" required />
-                    <input name="postalCode" value={form.postalCode} onChange={handleFormChange} placeholder="Pincode" required />
+                    <div className="addr-form-row">
+                      <div className="addr-form-group">
+                        <label>Full Name</label>
+                        <input name="fullName" value={form.fullName} onChange={handleFormChange} placeholder="e.g. John Doe" required />
+                      </div>
+                      <div className="addr-form-group">
+                        <label>Phone Number</label>
+                        <input name="phone" value={form.phone} onChange={handleFormChange} placeholder="e.g. 9876543210" required />
+                      </div>
+                    </div>
+                    <div className="addr-form-group">
+                      <label>Address</label>
+                      <textarea 
+                        name="addressLine1" 
+                        value={form.addressLine1} 
+                        onChange={handleFormChange} 
+                        placeholder="Street, Building, Flat" 
+                        required 
+                        rows="3"
+                      />
+                    </div>
+                    <div className="addr-form-row">
+                      <div className="addr-form-group">
+                        <label>City</label>
+                        <input name="city" value={form.city} onChange={handleFormChange} placeholder="City" required />
+                      </div>
+                      <div className="addr-form-group">
+                        <label>State</label>
+                        <input name="state" value={form.state} onChange={handleFormChange} placeholder="State" required />
+                      </div>
+                      <div className="addr-form-group">
+                        <label>Pincode</label>
+                        <input name="postalCode" value={form.postalCode} onChange={handleFormChange} placeholder="6-digit Pincode" required />
+                      </div>
+                    </div>
                     <div className="addr-form-actions">
-                      <button type="button" onClick={() => setShowForm(false)}>Cancel</button>
-                      <button type="submit" disabled={formLoading}>Save</button>
+                      <button type="button" className="addr-cancel-btn" onClick={() => setShowForm(false)}>Cancel</button>
+                      <button type="submit" className="addr-save-btn" disabled={formLoading}>
+                        {formLoading ? 'Saving...' : 'Save Address'}
+                      </button>
                     </div>
                   </form>
                 </div>

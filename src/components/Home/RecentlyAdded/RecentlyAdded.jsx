@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router';
 import api from '../../../utils/api';
+import { LongArrowIcon } from '../../../assets/images/icons.jsx';
 import './RecentlyAdded.css';
 import ProductCard from '../../commonComponents/ProductCard/ProductCard.jsx';
 
@@ -9,8 +11,8 @@ const RecentlyAdded = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await api.get('/products');
-        setProducts(data.slice(0, 8)); // Show last 8 products
+        const { data } = await api.get('/products?pageSize=8');
+        setProducts(data.products || []); // Show last 8 products
       } catch (err) {
         console.error("Failed to load products");
       }
@@ -22,13 +24,10 @@ const RecentlyAdded = () => {
     <section className="recent-wrapper">
       <div className="recent-header">
         <h2>Recently Added</h2>
-        <a href="#more" className="recent-more-link">
+        <Link to="/all-products" className="recent-more-link">
           More
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
+          <LongArrowIcon size={20} className="icon" />
+        </Link>
       </div>
       <div className="recent-scroll-container">
         {products.map((item) => (

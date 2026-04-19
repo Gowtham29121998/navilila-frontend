@@ -3,6 +3,7 @@ import api from '../../../utils/api';
 import { toast } from 'react-toastify';
 import AddProductModal from './AddProductModal';
 import { PlusIcon, EditIcon, TrashIcon } from '../../../assets/images/icons.jsx';
+import Pagination from '../../commonComponents/Pagination/Pagination.jsx';
 import './AdminProducts.css';
 
 const AdminProducts = () => {
@@ -10,11 +11,14 @@ const AdminProducts = () => {
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [page, setPage] = useState(1);
+  const [pages, setPages] = useState(1);
 
   const fetchProducts = async () => {
     try {
-      const { data } = await api.get('/products');
-      setProducts(data);
+      const { data } = await api.get(`/products?pageNumber=${page}&pageSize=20`);
+      setProducts(data.products);
+      setPages(data.pages);
       setLoading(false);
     } catch (error) {
       toast.error('Failed to fetch products');
@@ -24,7 +28,7 @@ const AdminProducts = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, []);
+  }, [page]);
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this product? All images will be permanently removed.')) {
@@ -108,6 +112,11 @@ const AdminProducts = () => {
             </table>
           </div>
         )}
+        <Pagination 
+          page={page} 
+          pages={pages} 
+          onChange={(p) => setPage(p)} 
+        />
       </div>
 
       <AddProductModal 

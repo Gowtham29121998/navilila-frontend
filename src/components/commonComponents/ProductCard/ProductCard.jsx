@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import api from '../../../utils/api';
 import { setCart, setFavorites } from '../../../redux/userSlice';
 import { toggleAuthModal } from '../../../redux/navigationSlice';
+import { HeartIcon } from '../../../assets/images/icons.jsx';
 import './ProductCard.css';
 
 const ProductCard = ({ id, image, name, price = 0, discount = 0 }) => {
@@ -91,9 +92,11 @@ const ProductCard = ({ id, image, name, price = 0, discount = 0 }) => {
           onClick={handleFavoriteClick}
           aria-label="Toggle favorite"
         >
-          <svg viewBox="0 0 24 24" width="20" height="20" fill={isFavorite ? "#ef4444" : "none"} stroke={isFavorite ? "#ef4444" : "currentColor"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-          </svg>
+          <HeartIcon 
+            size={20} 
+            fill={isFavorite ? "#ef4444" : "none"} 
+            stroke={isFavorite ? "#ef4444" : "currentColor"} 
+          />
         </button>
       </div>
 
@@ -111,19 +114,7 @@ const ProductCard = ({ id, image, name, price = 0, discount = 0 }) => {
           </div>
         </Link>
 
-        <div className="product-actions">
-          {cartItem ? (
-            <div className="qty-counter">
-              <button className="qty-btn" onClick={handleDecrement} aria-label="Decrease quantity">−</button>
-              <span className="qty-value">{cartItem.quantity}</span>
-              <button className="qty-btn" onClick={handleIncrement} aria-label="Increase quantity">+</button>
-            </div>
-          ) : (
-            <button className="add-to-cart-btn" onClick={handleAddToCart}>
-              Add to Cart
-            </button>
-          )}
-        </div>
+
       </div>
     </div>
   );

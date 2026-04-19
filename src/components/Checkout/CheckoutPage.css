@@ -254,12 +254,44 @@
 
 /* Address Form */
 .address-form-card {
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(56, 189, 248, 0.15);
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 24px;
-  padding: 30px;
-  margin-bottom: 28px;
-  backdrop-filter: blur(12px);
+  padding: 32px;
+  margin-bottom: 32px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.address-form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.address-form-card input,
+.address-form-card textarea {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #fff;
+  padding: 14px 18px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  width: 100%;
+  outline: none;
+  font-family: inherit;
+}
+
+.address-form-card input:focus,
+.address-form-card textarea:focus {
+  border-color: #38bdf8;
+  background: rgba(15, 23, 42, 0.8);
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.1);
+}
+
+.address-form-card input::placeholder {
+  color: #4b5563;
 }
 
 .address-form-header {
@@ -411,86 +443,87 @@
 .addr-form-group {
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  gap: 8px;
+  margin-bottom: 4px;
 }
 
 .addr-form-group label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #94a3b8;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #38bdf8;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: 1px;
 }
 
-.addr-form-group input {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  color: #fff;
-  padding: 12px 16px;
-  font-size: 0.9rem;
-  outline: none;
-  transition: border-color 0.3s;
+.addr-form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
 }
-
-.addr-form-group input:focus { border-color: #38bdf8; box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1); }
-.addr-form-group input::placeholder { color: #475569; }
 
 .addr-form-actions {
   display: flex;
-  gap: 12px;
   justify-content: flex-end;
-  margin-top: 8px;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.addr-cancel-btn, .addr-save-btn {
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .addr-cancel-btn {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #94a3b8;
-  padding: 11px 22px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.2s;
 }
-
-.addr-cancel-btn:hover { border-color: rgba(255, 255, 255, 0.2); color: #fff; }
 
 .addr-save-btn {
   background: linear-gradient(135deg, #38bdf8, #818cf8);
-  color: #fff;
   border: none;
-  padding: 11px 28px;
-  border-radius: 12px;
+  color: #fff;
   font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s;
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.2);
 }
 
-.addr-save-btn:hover:not(:disabled) { filter: brightness(1.1); transform: translateY(-1px); }
-.addr-save-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.addr-cancel-btn:hover, .addr-save-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
 
 /* Navigation buttons */
 .checkout-next-btn {
-  width: 100%;
-  padding: 16px;
+  display: block;
+  width: fit-content;
+  min-width: 200px;
+  margin: 3rem auto 0;
+  padding: 12px 32px;
   background: linear-gradient(135deg, #38bdf8, #818cf8);
   color: #fff;
   border: none;
-  border-radius: 16px;
+  border-radius: 100px;
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 700;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transition: all 0.3s;
-  margin-top: 8px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
 }
 
-.checkout-next-btn:hover:not(:disabled) { filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 15px 30px rgba(56, 189, 248, 0.3); }
-.checkout-next-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.checkout-next-btn:hover:not(:disabled) {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(56, 189, 248, 0.4);
+}
+
+.checkout-next-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
 
 /* Payment Step */
 .payment-section h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 20px; }

@@ -6,6 +6,7 @@ import { logout } from '../../../redux/userSlice';
 import SignUpModal from '../../commonComponents/SignUpModal/SignUpModal.jsx';
 import logoIcon from '../../../assets/logoIcon.png';
 import logoName from '../../../assets/logoName.png';
+import { MenuIcon, CartIcon, CloseIcon } from '../../../assets/images/icons.jsx';
 import './Header.css';
 
 const Header = () => {
@@ -30,11 +31,7 @@ const Header = () => {
         {/* Left side: Hamburger (mobile only) & Logo */}
         <div className="header-left">
           <button className="mobile-menu-btn" onClick={() => dispatch(toggleNavigation())} aria-label="Toggle Navigation">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
+            <MenuIcon size={24} className="icon" />
           </button>
 
           <Link to="/" className="header-logo">
@@ -48,6 +45,7 @@ const Header = () => {
           {!isAdmin ? (
             <>
               <NavLink to="/" className={({ isActive }) => `header-nav-link ${isActive ? 'active' : ''}`} end>Home</NavLink>
+              <NavLink to="/all-products" className={({ isActive }) => `header-nav-link ${isActive ? 'active' : ''}`}>Shop</NavLink>
               <NavLink to="/services" className={({ isActive }) => `header-nav-link ${isActive ? 'active' : ''}`}>Services</NavLink>
               <NavLink to="/portfolio" className={({ isActive }) => `header-nav-link ${isActive ? 'active' : ''}`}>Portfolio</NavLink>
               <NavLink to="/about" className={({ isActive }) => `header-nav-link ${isActive ? 'active' : ''}`}>About Us</NavLink>
@@ -69,11 +67,7 @@ const Header = () => {
         <div className="header-right">
           {isAuthenticated && (
           <Link to="/cart" className="header-cart-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon">
-                <circle cx="9" cy="21" r="1"></circle>
-                <circle cx="20" cy="21" r="1"></circle>
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-              </svg>
+              <CartIcon size={24} className="icon" />
               {userInfo?.cart?.length > 0 && (
                 <span className="cart-badge">{userInfo.cart.reduce((sum, i) => sum + i.quantity, 0)}</span>
               )}
@@ -118,16 +112,14 @@ const Header = () => {
         <div className="drawer-header">
           <Link to="/" className="header-logo" onClick={handleLinkClick}>Elevate</Link>
           <button className="close-menu-btn" onClick={() => dispatch(setNavigationOpen(false))} aria-label="Close Navigation">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
+            <CloseIcon size={24} className="icon" />
           </button>
         </div>
         <nav className="mobile-nav">
           {!isAdmin ? (
             <>
               <NavLink to="/" onClick={handleLinkClick} className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`} end>Home</NavLink>
+              <NavLink to="/all-products" onClick={handleLinkClick} className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}>Shop</NavLink>
               <NavLink to="/services" onClick={handleLinkClick} className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}>Services</NavLink>
               <NavLink to="/portfolio" onClick={handleLinkClick} className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}>Portfolio</NavLink>
               <NavLink to="/about" onClick={handleLinkClick} className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}>About Us</NavLink>
