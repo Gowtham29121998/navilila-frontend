@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router';
 import { useSelector } from 'react-redux';
-import Layout from './Components/Layout/Index';
+import Layout from './Components/Layout';
 import Index from './Components/Home';
-import About from './Components/About/Index';
+import About from './Components/About';
 import NotFound from './Components/NotFound/NotFound';
 
 // Admin Imports
