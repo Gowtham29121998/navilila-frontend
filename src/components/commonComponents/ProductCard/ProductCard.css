@@ -19,6 +19,10 @@
   border-color: rgba(56, 189, 248, 0.3);
 }
 
+.product-card-visual-link {
+  background-color: white;
+}
+
 .product-card-visual-link,
 .product-card-info-link {
   text-decoration: none;
@@ -39,7 +43,7 @@
 .product-image {
   width: 100%;
   height: 100%;
-  object-fit: inherit;
+  object-fit: contain;
   transition: transform 0.5s ease;
 }
 

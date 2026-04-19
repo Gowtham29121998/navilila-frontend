@@ -41,38 +41,52 @@ const compressImage = (file, maxWidth = 1200, quality = 0.8) => {
 };
 
 // Sub-component for Drag & Drop Upload
-const ImageUploadDropzone = ({ onUpload, label }) => {
+const ImageUploadDropzone = ({ onUpload, label, multiple = true }) => {
   const [isUploading, setIsUploading] = useState(false);
 
   const onDrop = useCallback(async (acceptedFiles) => {
     setIsUploading(true);
     toast.info("Compressing & Uploading...");
     
-    const results = [];
-    for (const file of acceptedFiles) {
-      try {
-        const compressedFile = await compressImage(file);
+    try {
+      if (multiple && acceptedFiles.length > 1) {
+        // Use bulk upload for multiple files
         const formData = new FormData();
-        formData.append('image', compressedFile);
-        const { data } = await api.post('products/upload', formData, {
+        for (const file of acceptedFiles) {
+          const compressed = await compressImage(file);
+          formData.append('images', compressed);
+        }
+        const { data } = await api.post('products/upload-multiple', formData, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
-        results.push({ url: data.url, public_id: data.public_id });
-      } catch (err) {
-        toast.error(`Upload failed for ${file.name}`);
+        onUpload(data);
+      } else {
+        // Single file or sequential upload fallback
+        const results = [];
+        for (const file of acceptedFiles) {
+          const compressedFile = await compressImage(file);
+          const formData = new FormData();
+          formData.append('image', compressedFile);
+          const { data } = await api.post('products/upload', formData, {
+            headers: { 'Content-Type': 'multipart/form-data' }
+          });
+          results.push({ url: data.url, public_id: data.public_id });
+        }
+        onUpload(results);
       }
-    }
-    
-    if (results.length > 0) {
-      onUpload(results);
       toast.success("Images ready");
+    } catch (err) {
+      console.error(err);
+      toast.error("Upload failed");
+    } finally {
+      setIsUploading(false);
     }
-    setIsUploading(false);
-  }, [onUpload]);
+  }, [onUpload, multiple]);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ 
+   const { getRootProps, getInputProps, isDragActive } = useDropzone({ 
     onDrop,
-    accept: { 'image/*': [] }
+    accept: { 'image/*': [] },
+    multiple
   });
 
   return (
@@ -162,7 +176,7 @@ const AddProductModal = ({ isOpen, onClose, onRefresh, editingProduct = null }) 
         })) : [],
         images: !showColors ? generalImages.map(img => ({ url: img.url, public_id: img.public_id })) : [],
         category, type, brand, discount: Number(discount) || 0,
-        dimensions: { width: Number(width) || 0, height: Number(height) || 0, length: Number(length) || 0 },
+        dimensions: { width, height, length },
         countInStock: showColors ? colors.reduce((acc, c) => acc + (Number(c.countInStock) || 0), 0) : Number(countInStock),
         material,
         packageIncludes,
@@ -242,9 +256,13 @@ const AddProductModal = ({ isOpen, onClose, onRefresh, editingProduct = null }) 
                             const updated = [...colors]; updated[index].code = e.target.value; setColors(updated);
                           }} />
                         </div>
-                        <ImageUploadDropzone onUpload={(results) => {
-                          const updated = [...colors]; updated[index].images = [...updated[index].images, ...results]; setColors(updated);
-                        }} label="Upload Images" />
+                        <ImageUploadDropzone 
+                          onUpload={(results) => {
+                            const updated = [...colors]; updated[index].images = [...updated[index].images, ...results]; setColors(updated);
+                          }} 
+                          label="Upload Images" 
+                          multiple={!editingProduct}
+                        />
                       </div>
                       
                       <div className="apm-preview-images">
@@ -267,8 +285,10 @@ const AddProductModal = ({ isOpen, onClose, onRefresh, editingProduct = null }) 
                 </div>
               ) : (
                 <div className="apm-form-group">
-                  <label>Images</label>
-                  <ImageUploadDropzone onUpload={(res) => setGeneralImages([...generalImages, ...res])} />
+                  <ImageUploadDropzone 
+                    onUpload={(res) => setGeneralImages([...generalImages, ...res])} 
+                    multiple={!editingProduct}
+                  />
                   <div className="apm-preview-images">
                     {generalImages?.map((img, i) => (
                       <div key={i} className="apm-preview-img-wrapper">
@@ -311,13 +331,13 @@ const AddProductModal = ({ isOpen, onClose, onRefresh, editingProduct = null }) 
                 <div className="apm-form-group"><label>Brand</label><input type="text" value={brand} onChange={(e) => setBrand(e.target.value)} /></div>
               </div>
               <div className="apm-form-row">
-                <div className="apm-form-group"><label>Material Style</label><input type="text" value={material} onChange={(e) => setMaterial(e.target.value)} /></div>
+                <div className="apm-form-group"><label>Material</label><input type="text" value={material} onChange={(e) => setMaterial(e.target.value)} /></div>
                 <div className="apm-form-group"><label>Package Includes</label><input type="text" value={packageIncludes} onChange={(e) => setPackageIncludes(e.target.value)} /></div>
               </div>
               <div className="apm-form-row">
-                <div className="apm-form-group"><label>W (cm)</label><input type="number" value={width} onChange={(e) => setWidth(e.target.value)} /></div>
-                <div className="apm-form-group"><label>H (cm)</label><input type="number" value={height} onChange={(e) => setHeight(e.target.value)} /></div>
-                <div className="apm-form-group"><label>L (cm)</label><input type="number" value={length} onChange={(e) => setLength(e.target.value)} /></div>
+                <div className="apm-form-group"><label>H</label><input type="text" value={height} onChange={(e) => setHeight(e.target.value)} /></div>
+                <div className="apm-form-group"><label>W</label><input type="text" value={width} onChange={(e) => setWidth(e.target.value)} /></div>
+                <div className="apm-form-group"><label>L</label><input type="text" value={length} onChange={(e) => setLength(e.target.value)} /></div>
               </div>
               <div className="apm-form-group">
                 <label>Stock {showColors && "(Auto-calculated from colors)"}</label>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import reactSlick from 'react-slick';
 import api from '../../../utils/api';
+import { ChevronLeft, ChevronRight } from '../../../assets/images/icons.jsx';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './HeroSection.css';
@@ -11,6 +12,7 @@ const Slider = typeof reactSlick === 'function' ? reactSlick : reactSlick.defaul
 const HeroSection = () => {
   const [slidesData, setSlidesData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const sliderRef = React.useRef(null);
 
   useEffect(() => {
     const fetchHeroContent = async () => {
@@ -19,7 +21,6 @@ const HeroSection = () => {
         if (data.heroSection && data.heroSection.length > 0) {
           setSlidesData(data.heroSection);
         } else {
-          // Fallback static data if none in DB
           setSlidesData([
             {
               _id: 1,
@@ -55,23 +56,41 @@ const HeroSection = () => {
   if (loading) return <div className="hero-loading"></div>;
 
   return (
-    <div className="hero-container">
-      <Slider {...settings}>
-        {slidesData.map((slide, index) => (
-          <div key={slide._id || index} className="hero-slide">
-            <img src={slide.image} alt={slide.title} className="hero-slide-bg" />
-            <div className="hero-content">
-              <h1>{slide.title}</h1>
-              <p>{slide.subtitle}</p>
-              {slide.link && (
-                <Link to={slide.link}>
-                  <button className="hero-btn">Get Started</button>
-                </Link>
-              )}
+    <div className="hero-wrapper">
+      <button 
+        className="hero-arrow hero-prev" 
+        onClick={() => sliderRef.current?.slickPrev()} 
+        aria-label="Previous slide"
+      >
+        <ChevronLeft size={28} />
+      </button>
+
+      <div className="hero-container">
+        <Slider ref={sliderRef} {...settings}>
+          {slidesData.map((slide, index) => (
+            <div key={slide._id || index} className="hero-slide">
+              <img src={slide.image} alt={slide.title} className="hero-slide-bg" />
+              <div className="hero-content">
+                <h1>{slide.title}</h1>
+                <p>{slide.subtitle}</p>
+                {slide.link && (
+                  <Link to={slide.link}>
+                    <button className="hero-btn">Get Started</button>
+                  </Link>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      </div>
+
+      <button 
+        className="hero-arrow hero-next" 
+        onClick={() => sliderRef.current?.slickNext()} 
+        aria-label="Next slide"
+      >
+        <ChevronRight size={28} />
+      </button>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 .pd-v2-container {
+  max-width: 1400px;
   margin: 0 auto;
   padding: 40px 20px;
   color: #fff;
@@ -37,7 +38,13 @@
   gap: 80px;
   margin-bottom: 100px;
   min-width: 0;
-  /* Prevents grid items from overflowing */
+  align-items: flex-start;
+}
+
+.pd-v2-visuals,
+.pd-v2-info {
+  min-width: 0;
+  /* Critical for slider responsiveness inside grid */
 }
 
 /* Slider Section */
@@ -48,6 +55,7 @@
 }
 
 .pd-v2-slider-wrapper {
+  position: relative;
   background: rgba(30, 41, 59, 0.5);
   backdrop-filter: blur(12px);
   border-radius: 40px;
@@ -437,24 +445,24 @@
   margin-bottom: 25px;
 }
 
-/* Slick Customization */
-.slick-prev,
-.slick-next {
+/* Slick Customization - Scoped to Product Details */
+.pd-v2-container .slick-prev,
+.pd-v2-container .slick-next {
   width: 50px;
   height: 50px;
   z-index: 100;
 }
 
-.slick-prev {
+.pd-v2-container .slick-prev {
   left: 20px;
 }
 
-.slick-next {
+.pd-v2-container .slick-next {
   right: 20px;
 }
 
-.slick-prev:before,
-.slick-next:before {
+.pd-v2-container .slick-prev:before,
+.pd-v2-container .slick-next:before {
   font-size: 40px;
   color: #38bdf8;
   opacity: 0.8;
@@ -487,22 +495,78 @@
 @media (max-width: 1100px) {
   .pd-v2-main-grid {
     grid-template-columns: 1fr;
-    gap: 60px;
+    gap: 50px;
+  }
+
+  .pd-v2-slide img {
+    height: 400px;
+  }
+
+  .pd-v2-container .slick-prev,
+  .pd-v2-container .slick-next {
+    display: none !important;
   }
 }
 
 @media (max-width: 768px) {
+  .pd-v2-container {
+    padding: 20px 15px;
+  }
+
+  .pd-back-btn {
+    margin-bottom: 25px;
+    padding: 8px 15px;
+  }
+
   .pd-v2-title {
     font-size: 1.1rem;
   }
 
   .pd-v2-pricing-row {
     flex-direction: column;
-    align-items: stretch;
-    gap: 30px;
+    align-items: flex-start;
+    gap: 25px;
+    padding: 25px;
+  }
+
+  .pd-v2-price-group .current {
+    font-size: 2.2rem;
   }
 
   .pd-v2-reviews-layout {
     grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .pd-v2-reviews {
+    padding: 40px 20px;
+  }
+
+  .pd-v2-review-form {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pd-v2-title {
+    font-size: 1.4rem;
+  }
+
+  .pd-v2-price-group .current {
+    font-size: 1.8rem;
+  }
+
+  .pd-v2-add-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pd-v2-cart-actions {
+    width: 100%;
+  }
+
+  .pd-v2-qty-counter {
+    width: 100%;
+    justify-content: space-between;
   }
 }

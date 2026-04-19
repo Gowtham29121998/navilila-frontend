@@ -262,16 +262,15 @@ const ProductDetails = () => {
           <div className="pd-v2-specs">
             <label>Product Details</label>
             <div className="pd-v2-specs-grid">
-              <div className="spec-item"><span>Type</span><strong>{product.type || 'N/A'}</strong></div>
-              <div className="spec-item"><span>Brand</span><strong>{product.brand || 'N/A'}</strong></div>
-              <div className="spec-item"><span>Category</span><strong>{product.category?.name || 'N/A'}</strong></div>
-              {product.material && <div className="spec-item"><span>Material Style</span><strong>{product.material}</strong></div>}
-              {product.packageIncludes && <div className="spec-item"><span>Includes</span><strong>{product.packageIncludes}</strong></div>}
-              <div className="spec-item"><span>Color Selected</span><strong>{selectedColor || 'Standard'}</strong></div>
-              <div className="spec-item"><span>Stock Available</span><strong>{product.showColors ? (product.colors[selectedColorIndex]?.countInStock || 0) : product.countInStock}</strong></div>
-              {product.dimensions?.width > 0 && <div className="spec-item"><span>Width</span><strong>{product.dimensions.width} cm</strong></div>}
-              {product.dimensions?.height > 0 && <div className="spec-item"><span>Height</span><strong>{product.dimensions.height} cm</strong></div>}
-              {product.dimensions?.length > 0 && <div className="spec-item"><span>Length</span><strong>{product.dimensions.length} cm</strong></div>}
+              {product.type && <div className="spec-item"><span>Type</span><strong>{product.type}</strong></div>}
+              {product.brand && <div className="spec-item"><span>Brand</span><strong>{product.brand}</strong></div>}
+              {product.category?.name && <div className="spec-item"><span>Category</span><strong>{product.category?.name}</strong></div>}
+              {product.material && <div className="spec-item"><span>Material</span><strong>{product.material}</strong></div>}
+              {product.packageIncludes && <div className="spec-item"><span>Package Includes</span><strong>{product.packageIncludes}</strong></div>}
+              {selectedColor && <div className="spec-item"><span>Color</span><strong>{selectedColor}</strong></div>}
+              {product.dimensions?.height && <div className="spec-item"><span>Height</span><strong>{product.dimensions.height}</strong></div>}
+              {product.dimensions?.width && <div className="spec-item"><span>Width</span><strong>{product.dimensions.width}</strong></div>}
+              {product.dimensions?.length && <div className="spec-item"><span>Length</span><strong>{product.dimensions.length}</strong></div>}
             </div>
           </div>
         </div>
