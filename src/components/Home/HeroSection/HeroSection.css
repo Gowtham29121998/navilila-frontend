@@ -1,7 +1,7 @@
 .hero-container {
   position: relative;
   width: 100%;
-  height: 55vh;
+  height: 60vh;
   /* Adjust as needed */
   overflow: hidden;
 }
@@ -30,18 +30,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
   background-color: #0f172a;
   filter: brightness(0.8);
   /* Darken image to make text pop */
-  transition: transform 10s ease;
+  transition: transform 5s ease;
   /* subtle Ken Burns effect base */
 }
 
 /* Slight zoom effect when slide is active (optional, requires more complex active state logic, 
    but basic hover or static makes it nice. Let's just keep it still or slightly scaling) */
 .slick-active .hero-slide-bg {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .hero-content {

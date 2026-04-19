@@ -21,6 +21,7 @@ import CartPage from './components/Cart/CartPage';
 import CheckoutPage from './components/Checkout/CheckoutPage';
 import Profile from './components/Profile/Profile';
 import MyOrders from './components/MyOrders/MyOrders';
+import ResetPassword from './components/Auth/ResetPassword';
 
 const AppRouter = () => {
   const { userInfo } = useSelector((state) => state.user);
@@ -38,6 +39,7 @@ const AppRouter = () => {
         <Route path="checkout" element={<CheckoutPage />} />
         <Route path="profile" element={<Profile />} />
         <Route path="my-orders" element={<MyOrders />} />
+        <Route path="reset-password/:token" element={<ResetPassword />} />
         
         {/* Admin Private Routes */}
         <Route path="admin" element={<AdminRoute />}>

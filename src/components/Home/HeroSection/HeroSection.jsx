@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router';
 import reactSlick from 'react-slick';
 import api from '../../../utils/api';
 import 'slick-carousel/slick/slick.css';
@@ -24,7 +25,8 @@ const HeroSection = () => {
               _id: 1,
               image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1920&q=80",
               title: "Shape the Future",
-              subtitle: "Harness the power of cutting-edge web technologies to build blazing fast and stunningly beautiful digital experiences."
+              subtitle: "Harness the power of cutting-edge web technologies to build blazing fast and stunningly beautiful digital experiences.",
+              link: "/services"
             }
           ]);
         }
@@ -61,7 +63,11 @@ const HeroSection = () => {
             <div className="hero-content">
               <h1>{slide.title}</h1>
               <p>{slide.subtitle}</p>
-              <button className="hero-btn">Get Started</button>
+              {slide.link && (
+                <Link to={slide.link}>
+                  <button className="hero-btn">Get Started</button>
+                </Link>
+              )}
             </div>
           </div>
         ))}
