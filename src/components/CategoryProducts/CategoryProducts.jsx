@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import api from '../../utils/api';
-import ProductCard from '../commoncomponents/ProductCard/ProductCard';
 import './CategoryProducts.css';
+import ProductCard from '../commonComponents/ProductCard/ProductCard.jsx'
 
 const CategoryProducts = () => {
   const { categoryId } = useParams();

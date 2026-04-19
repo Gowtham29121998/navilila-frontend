@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import ProductCard from '../../commoncomponents/ProductCard/ProductCard';
 import api from '../../../utils/api';
 import './RecentlyAdded.css';
+import ProductCard from '../../commonComponents/ProductCard/ProductCard.jsx';
 
 const RecentlyAdded = () => {
   const [products, setProducts] = useState([]);
