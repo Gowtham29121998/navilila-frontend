@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { toast } from 'react-toastify';
 import api from '../../../utils/api';
-import { PlusIcon, UploadIcon, CloseIcon } from '../../../assets/images/icons';
+import { PlusIcon, UploadIcon, CloseIcon } from '../../../assets/images/icons.jsx';
 import './AddProductModal.css';
 
 // Helper to Compress/Resize Image before upload

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ProductCard from '../../commonComponents/ProductCard/ProductCard';
+import ProductCard from '../../commoncomponents/ProductCard/ProductCard';
 import api from '../../../utils/api';
 import './RecentlyAdded.css';
 

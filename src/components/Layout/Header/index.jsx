@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleNavigation, setNavigationOpen, toggleAuthModal } from '../../../redux/navigationSlice';
 import { logout } from '../../../redux/userSlice';
-import SignUpModal from '../../commonComponents/SignUpModal/SignUpModal';
+import SignUpModal from '../../commoncomponents/SignUpModal/SignUpModal';
 import logoIcon from '../../../assets/logoIcon.png';
 import logoName from '../../../assets/logoName.png';
 import './Header.css';

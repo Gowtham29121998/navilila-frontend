@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../../../utils/api';
 import { toast } from 'react-toastify';
 import AddCategoryModal from './AddCategoryModal';
-import { PlusIcon } from '../../../assets/images/icons';
+import { PlusIcon } from '../../../assets/images/icons.jsx';
 import './AdminCategories.css';
 
 const AdminCategories = () => {

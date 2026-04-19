@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../../../utils/api';
 import { toast } from 'react-toastify';
 import AddProductModal from './AddProductModal';
-import { PlusIcon, EditIcon, TrashIcon } from '../../../assets/images/icons';
+import { PlusIcon, EditIcon, TrashIcon } from '../../../assets/images/icons.jsx';
 import './AdminProducts.css';
 
 const AdminProducts = () => {

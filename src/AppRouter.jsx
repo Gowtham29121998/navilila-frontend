@@ -1,26 +1,26 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router';
 import { useSelector } from 'react-redux';
-import Layout from './Components/Layout';
-import Index from './Components/Home';
-import About from './Components/About';
-import NotFound from './Components/NotFound/NotFound';
+import Layout from './components/Layout';
+import Index from './components/Home';
+import About from './components/About';
+import NotFound from './components/NotFound/NotFound';
 
 // Admin Imports
-import AdminRoute from './Components/Admin/AdminRoute';
-import AdminDashboard from './Components/Admin/Dashboard/AdminDashboard';
-import AdminProducts from './Components/Admin/Products/AdminProducts';
-import AdminCategories from './Components/Admin/Categories/AdminCategories';
-import AdminUsers from './Components/Admin/Users/AdminUsers';
-import AdminOrders from './Components/Admin/Orders/AdminOrders';
-import AdminSettings from './Components/Admin/Settings/AdminSettings';
-import AdminCoupons from './Components/Admin/Coupons/AdminCoupons';
-import ProductDetails from './Components/ProductDetails/ProductDetails';
-import CategoryProducts from './Components/CategoryProducts/CategoryProducts';
-import CartPage from './Components/Cart/CartPage';
-import CheckoutPage from './Components/Checkout/CheckoutPage';
-import Profile from './Components/Profile/Profile';
-import MyOrders from './Components/MyOrders/MyOrders';
+import AdminRoute from './components/Admin/AdminRoute';
+import AdminDashboard from './components/Admin/Dashboard/AdminDashboard';
+import AdminProducts from './components/Admin/Products/AdminProducts';
+import AdminCategories from './components/Admin/Categories/AdminCategories';
+import AdminUsers from './components/Admin/Users/AdminUsers';
+import AdminOrders from './components/Admin/Orders/AdminOrders';
+import AdminSettings from './components/Admin/Settings/AdminSettings';
+import AdminCoupons from './components/Admin/Coupons/AdminCoupons';
+import ProductDetails from './components/ProductDetails/ProductDetails';
+import CategoryProducts from './components/CategoryProducts/CategoryProducts';
+import CartPage from './components/Cart/CartPage';
+import CheckoutPage from './components/Checkout/CheckoutPage';
+import Profile from './components/Profile/Profile';
+import MyOrders from './components/MyOrders/MyOrders';
 
 const AppRouter = () => {
   const { userInfo } = useSelector((state) => state.user);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
 import api from '../../utils/api';
-import ProductCard from '../commonComponents/ProductCard/ProductCard';
+import ProductCard from '../commoncomponents/ProductCard/ProductCard';
 import './CategoryProducts.css';
 
 const CategoryProducts = () => {
