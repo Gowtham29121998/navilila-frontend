@@ -42,6 +42,7 @@ const AppRouter = () => {
         <Route path="my-orders" element={<MyOrders />} />
         <Route path="all-products" element={<AllProducts />} />
         <Route path="reset-password/:token" element={<ResetPassword />} />
+        <Route path="set-password/:token" element={<ResetPassword />} />
         
         {/* Admin Private Routes */}
         <Route path="admin" element={<AdminRoute />}>

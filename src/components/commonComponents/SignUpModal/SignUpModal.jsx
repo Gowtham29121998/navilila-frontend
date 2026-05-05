@@ -38,20 +38,8 @@ const SignUpModal = ({ isOpen, onClose }) => {
       else if (!/^\d{10}$/.test(phone.trim())) newErrors.phone = "Invalid 10-digit number";
     }
 
-    if (mode !== 'forgot') {
+    if (mode === 'signin') {
       if (!password) newErrors.password = "Password is required";
-      else if (password.length < 6) newErrors.password = "Min 6 characters";
-      else {
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
-        if (!passwordRegex.test(password)) {
-          newErrors.password = "Need 1 Caps, 1 Number, 1 Special Char";
-        }
-      }
-
-      if (mode === 'signup' || mode === 'reset') {
-        if (!confirmPassword) newErrors.confirmPassword = "Confirm your password";
-        else if (password !== confirmPassword) newErrors.confirmPassword = "Passwords do not match";
-      }
     }
 
     setErrors(newErrors);
@@ -66,15 +54,18 @@ const SignUpModal = ({ isOpen, onClose }) => {
     try {
       let response;
       if (mode === 'signup') {
-        response = await api.post('/users/signup', { username, email, phone, password });
-        toast.success("Account created successfully!");
+        response = await api.post('/users/signup', { username, email, phone });
+        toast.success(response.data.message || "Registration started! Check your email.");
+        onClose();
+        resetForm();
+        return;
       } else if (mode === 'signin') {
         response = await api.post('/users/signin', { email, password });
         toast.success("Welcome back!");
       } else {
         // Forgot password
-        await api.post('/users/forgotpassword', { email });
-        toast.success("Password reset link sent to your email!");
+        response = await api.post('/users/forgotpassword', { email });
+        toast.success(response.data.message || "Password reset link sent to your email!");
         setMode('signin');
         setLoading(false);
         return;
@@ -173,7 +164,7 @@ const SignUpModal = ({ isOpen, onClose }) => {
               </div>
             )}
 
-            {mode !== 'forgot' && (
+            {mode === 'signin' && (
               <div className="form-group">
                 <label>Password</label>
                 <div className="password-input-wrapper">
@@ -194,30 +185,6 @@ const SignUpModal = ({ isOpen, onClose }) => {
                   </button>
                 </div>
                 {errors.password && <span className="error-text">{errors.password}</span>}
-              </div>
-            )}
-
-            {mode === 'signup' && (
-              <div className="form-group">
-                <label>Confirm Password</label>
-                <div className="password-input-wrapper">
-                  <input
-                    type={showConfirmPassword ? "text" : "password"}
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    placeholder="••••••••"
-                    className={errors.confirmPassword ? 'error-input' : ''}
-                  />
-                  <button 
-                    type="button" 
-                    className="password-toggle" 
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    aria-label={showConfirmPassword ? "Hide password" : "Show password"}
-                  >
-                    {showConfirmPassword ? <EyeOffIcon size={18} /> : <EyeIcon size={18} />}
-                  </button>
-                </div>
-                {errors.confirmPassword && <span className="error-text">{errors.confirmPassword}</span>}
               </div>
             )}
 

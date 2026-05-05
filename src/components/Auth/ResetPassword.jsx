@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router';
+import { useParams, useNavigate, useLocation } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/userSlice';
 import { toast } from 'react-toastify';
 import api from '../../utils/api';
 import './ResetPassword.css';
@@ -7,6 +9,10 @@ import './ResetPassword.css';
 const ResetPassword = () => {
   const { token } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const isSetPassword = location.pathname.includes('set-password');
+  
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -27,8 +33,19 @@ const ResetPassword = () => {
 
     setLoading(true);
     try {
-      await api.put(`/users/resetpassword/${token}`, { password });
-      toast.success("Password reset successful! You can now log in.");
+      const response = await api.put(`/users/resetpassword/${token}`, { password });
+      
+      if (response.data && response.data.user && response.data.token) {
+        const userData = {
+          token: response.data.token,
+          ...response.data.user
+        };
+
+        localStorage.setItem('userInfo', JSON.stringify(userData));
+        dispatch(setUser(userData));
+      }
+
+      toast.success(`${isSetPassword ? 'Password set' : 'Password reset'} successful! You are now logged in.`);
       navigate('/');
     } catch (error) {
       toast.error(error.response?.data?.message || "Reset failed. Link may be expired.");
@@ -41,8 +58,8 @@ const ResetPassword = () => {
     <div className="reset-password-page">
       <div className="reset-password-container">
         <div className="reset-password-header">
-          <h2>Create New Password</h2>
-          <p>Please enter your new password below</p>
+          <h2>{isSetPassword ? 'Set Your Password' : 'Create New Password'}</h2>
+          <p>{isSetPassword ? 'Please set your password to complete registration' : 'Please enter your new password below'}</p>
         </div>
 
         <form onSubmit={handleSubmit} className="reset-password-form">
@@ -107,7 +124,7 @@ const ResetPassword = () => {
           </div>
 
           <button type="submit" className="submit-btn" disabled={loading}>
-            {loading ? 'Updating...' : 'Update Password'}
+            {loading ? (isSetPassword ? 'Setting Password...' : 'Updating...') : (isSetPassword ? 'Set Password' : 'Update Password')}
           </button>
         </form>
       </div>
