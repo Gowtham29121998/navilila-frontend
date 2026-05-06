@@ -20,6 +20,7 @@ const Profile = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   // Password Change States
   const [showPasswordModal, setShowPasswordModal] = useState(false);
@@ -55,6 +56,36 @@ const Profile = () => {
 
   const handleFormChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('image', file);
+
+    setUploadingImage(true);
+    try {
+      // 1. Upload to Cloudinary
+      const { data } = await api.post('/products/upload', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
+      
+      const newImageUrl = data.url;
+      
+      // 2. Update state and automatically persist to DB
+      const response = await api.put('/users/profile', { image: newImageUrl });
+      
+      setForm(prev => ({ ...prev, image: newImageUrl }));
+      dispatch(setUser({ ...userInfo, ...response.data }));
+      
+      toast.success('Profile picture updated successfully');
+    } catch (error) {
+      toast.error('Failed to update profile picture');
+    } finally {
+      setUploadingImage(false);
+    }
   };
 
   const handleSaveProfile = async (e) => {
@@ -129,18 +160,12 @@ const Profile = () => {
                 type="file" 
                 accept="image/*" 
                 style={{ display: 'none' }} 
-                onChange={(e) => {
-                  const file = e.target.files[0];
-                  if (file) {
-                    const reader = new FileReader();
-                    reader.onloadend = () => {
-                      setForm({ ...form, image: reader.result });
-                    };
-                    reader.readAsDataURL(file);
-                  }
-                }} 
+                onChange={handleImageUpload} 
+                disabled={uploadingImage}
               />
-              {form.image ? (
+              {uploadingImage ? (
+                <div className="profile-avatar-fallback">...</div>
+              ) : form.image ? (
                 <img src={form.image} alt="Profile" className="profile-avatar" />
               ) : (
                 <div className="profile-avatar-fallback">
@@ -149,7 +174,7 @@ const Profile = () => {
               )}
               <div className="profile-upload-overlay">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-                <span>Upload</span>
+                <span>{uploadingImage ? 'Uploading...' : 'Upload'}</span>
               </div>
             </label>
           </div>

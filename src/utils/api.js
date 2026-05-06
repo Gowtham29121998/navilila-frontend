@@ -34,7 +34,8 @@ api.interceptors.response.use(
   (error) => {
     if (error.response) {
       // 401: Unauthorized / Session Expired / Logged in elsewhere
-      if (error.response.status === 401) {
+      // Ignore 401s from signin or upload so the component can show the error toast
+      if (error.response.status === 401 && !error.config.url.includes('/users/signin') && !error.config.url.includes('/products/upload')) {
         console.error('Session expired or unauthorized. Logging out...');
         localStorage.removeItem('userInfo');
         store.dispatch(logout());

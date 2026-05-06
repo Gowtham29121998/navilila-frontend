@@ -39,6 +39,35 @@ const AdminSettings = () => {
     setSettings(prev => ({ ...prev, heroSection: updatedHero }));
   };
 
+  const extractPublicId = (url) => {
+    if (!url || !url.includes('cloudinary.com')) return null;
+    try {
+      const urlParts = url.split('/upload/');
+      if (urlParts.length > 1) {
+        const afterUpload = urlParts[1];
+        const parts = afterUpload.split('/');
+        if (parts[0].startsWith('v') && !isNaN(parts[0].substring(1))) {
+          parts.shift();
+        }
+        return parts.join('/').split('.')[0];
+      }
+    } catch (err) {
+      console.error('Error extracting public ID:', err);
+    }
+    return null;
+  };
+
+  const deleteImageFromCloudinary = async (imageUrl) => {
+    const publicId = extractPublicId(imageUrl);
+    if (!publicId) return;
+    
+    try {
+      await api.post('/products/delete', { public_id: publicId });
+    } catch (error) {
+      console.error('Failed to delete old image from Cloudinary', error);
+    }
+  };
+
   const addHeroSlide = () => {
     setSettings(prev => ({
       ...prev,
@@ -49,7 +78,12 @@ const AdminSettings = () => {
     }));
   };
 
-  const removeHeroSlide = (index) => {
+  const removeHeroSlide = async (index) => {
+    const slide = settings.heroSection[index];
+    if (slide.image) {
+      // Immediately delete from Cloudinary when removed
+      await deleteImageFromCloudinary(slide.image);
+    }
     const updatedHero = settings.heroSection.filter((_, i) => i !== index);
     setSettings(prev => ({ ...prev, heroSection: updatedHero }));
   };
@@ -66,6 +100,12 @@ const AdminSettings = () => {
       const { data } = await api.post('/products/upload', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
+      
+      // If there was an old image, delete it from Cloudinary
+      if (settings.heroSection[index].image) {
+        await deleteImageFromCloudinary(settings.heroSection[index].image);
+      }
+      
       handleHeroChange(index, 'image', data.url);
       toast.success('Image uploaded successfully');
     } catch (error) {
@@ -165,15 +205,15 @@ const AdminSettings = () => {
                             <input type="file" onChange={(e) => handleImageUpload(e, index)} hidden />
                           </label>
                         </div>
-                      ) : (
+                      ) : uploading === index ? (
                         <div className="upload-placeholder">
-                          {uploading === index ? 'Uploading...' : (
-                            <label>
-                              Upload Image
-                              <input type="file" onChange={(e) => handleImageUpload(e, index)} hidden />
-                            </label>
-                          )}
+                          Uploading...
                         </div>
+                      ) : (
+                        <label className="upload-placeholder">
+                          Upload Image
+                          <input type="file" onChange={(e) => handleImageUpload(e, index)} hidden />
+                        </label>
                       )}
                     </div>
 

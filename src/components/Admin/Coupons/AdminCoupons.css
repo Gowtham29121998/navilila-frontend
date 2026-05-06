@@ -155,9 +155,10 @@
 }
 
 .admin-modal {
+  position: relative;
   width: 100%;
   max-width: 500px;
-  padding: 2.5rem;
+  padding: 1.5rem;
   animation: modalScale 0.3s ease-out;
 }
 
@@ -187,12 +188,16 @@
 }
 
 .close-modal-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
   background: none;
   border: none;
   color: #94a3b8;
   font-size: 1.8rem;
   cursor: pointer;
   transition: color 0.3s;
+  line-height: 1;
 }
 
 .close-modal-btn:hover {
@@ -221,6 +226,8 @@
 .admin-form input,
 .admin-form select,
 .admin-datepicker {
+  width: 100%;
+  box-sizing: border-box;
   background: rgba(15, 23, 42, 0.8) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 12px !important;

@@ -78,7 +78,11 @@ const Header = () => {
             {isAuthenticated ? (
               <div className="user-profile-container">
                 <div className="user-avatar">
-                  {userInfo?.username?.charAt(0).toUpperCase() || 'U'}
+                  {userInfo?.image ? (
+                    <img src={userInfo.image} alt="Avatar" className="user-avatar-img" />
+                  ) : (
+                    userInfo?.username?.charAt(0).toUpperCase() || 'U'
+                  )}
                 </div>
                 <div className="user-dropdown">
                   <p className="user-name">{userInfo?.username}</p>

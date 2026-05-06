@@ -298,7 +298,11 @@ const ProductDetails = () => {
             {comments.length === 0 ? <p className="pd-v2-empty">No comments yet. Share your thoughts!</p> : comments.map((c) => (
               <div key={c._id} className="pd-v2-comment-item">
                 <div className="pd-v2-comment-avatar">
-                  {(c.user?.username || c.username || 'U')[0].toUpperCase()}
+                  {c.user?.image ? (
+                    <img src={c.user.image} alt="" className="comment-avatar-img" />
+                  ) : (
+                    (c.user?.username || c.username || 'U')[0].toUpperCase()
+                  )}
                 </div>
                 <div className="pd-v2-comment-content">
                   <div className="pd-v2-comment-header">

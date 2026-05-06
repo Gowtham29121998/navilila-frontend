@@ -14,6 +14,7 @@ const userSlice = createSlice({
     setUser: (state, action) => {
       state.userInfo = action.payload;
       state.isAuthenticated = true;
+      localStorage.setItem('userInfo', JSON.stringify(action.payload));
     },
     setCart: (state, action) => {
       if (state.userInfo) {
