@@ -151,7 +151,7 @@ const AdminOrders = () => {
                       </div>
                     ))}
                   </td>
-                  <td className="order-total-cell">${order.totalPrice.toFixed(2)}</td>
+                  <td className="order-total-cell">₹{order.totalPrice.toFixed(2)}</td>
                   <td>{order.paymentMethod}</td>
                   <td>
                     <span className={`status-badge ${order.status}`}>

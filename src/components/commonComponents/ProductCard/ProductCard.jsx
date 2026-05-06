@@ -104,10 +104,10 @@ const ProductCard = ({ id, image, name, price = 0, discount = 0 }) => {
         <Link to={`/product/${id}`} className="product-card-info-link">
           <h3 className="product-title">{name}</h3>
           <div className="product-price-row">
-            <span className="current-price">${price}</span>
+            <span className="current-price">₹{price}</span>
             {discount > 0 && (
               <>
-                <span className="original-price">${originalPrice}</span>
+                <span className="original-price">₹{originalPrice}</span>
                 <span className="discount-tag">-{discount}%</span>
               </>
             )}

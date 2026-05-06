@@ -46,8 +46,8 @@ const Header = () => {
             <>
               <NavLink to="/" className={({ isActive }) => `header-nav-link ${isActive ? 'active' : ''}`} end>Home</NavLink>
               <NavLink to="/all-products" className={({ isActive }) => `header-nav-link ${isActive ? 'active' : ''}`}>Shop</NavLink>
-              <NavLink to="/services" className={({ isActive }) => `header-nav-link ${isActive ? 'active' : ''}`}>Services</NavLink>
-              <NavLink to="/portfolio" className={({ isActive }) => `header-nav-link ${isActive ? 'active' : ''}`}>Portfolio</NavLink>
+              {/* <NavLink to="/services" className={({ isActive }) => `header-nav-link ${isActive ? 'active' : ''}`}>Services</NavLink>
+              <NavLink to="/portfolio" className={({ isActive }) => `header-nav-link ${isActive ? 'active' : ''}`}>Portfolio</NavLink> */}
               <NavLink to="/about" className={({ isActive }) => `header-nav-link ${isActive ? 'active' : ''}`}>About Us</NavLink>
             </>
           ) : (
@@ -66,7 +66,7 @@ const Header = () => {
         {/* Right side: Auth Action */}
         <div className="header-right">
           {isAuthenticated && (
-          <Link to="/cart" className="header-cart-icon">
+            <Link to="/cart" className="header-cart-icon">
               <CartIcon size={24} className="icon" />
               {userInfo?.cart?.length > 0 && (
                 <span className="cart-badge">{userInfo.cart.reduce((sum, i) => sum + i.quantity, 0)}</span>
@@ -114,7 +114,10 @@ const Header = () => {
       {/* Mobile Drawer */}
       <div className={`mobile-drawer ${isOpen ? 'open' : ''}`}>
         <div className="drawer-header">
-          <Link to="/" className="header-logo" onClick={handleLinkClick}>Elevate</Link>
+          <Link to="/" className="header-logo" onClick={handleLinkClick}>
+            <img src={logoIcon} alt="Logo" className="logo-icon-img" />
+            <img src={logoName} alt="Elevate" className="logo-name-img" />
+          </Link>
           <button className="close-menu-btn" onClick={() => dispatch(setNavigationOpen(false))} aria-label="Close Navigation">
             <CloseIcon size={24} className="icon" />
           </button>
@@ -124,8 +127,8 @@ const Header = () => {
             <>
               <NavLink to="/" onClick={handleLinkClick} className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`} end>Home</NavLink>
               <NavLink to="/all-products" onClick={handleLinkClick} className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}>Shop</NavLink>
-              <NavLink to="/services" onClick={handleLinkClick} className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}>Services</NavLink>
-              <NavLink to="/portfolio" onClick={handleLinkClick} className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}>Portfolio</NavLink>
+              {/* <NavLink to="/services" onClick={handleLinkClick} className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}>Services</NavLink>
+              <NavLink to="/portfolio" onClick={handleLinkClick} className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}>Portfolio</NavLink> */}
               <NavLink to="/about" onClick={handleLinkClick} className={({ isActive }) => `mobile-nav-link ${isActive ? 'active' : ''}`}>About Us</NavLink>
             </>
           ) : (

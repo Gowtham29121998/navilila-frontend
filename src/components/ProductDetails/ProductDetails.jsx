@@ -226,10 +226,10 @@ const ProductDetails = () => {
 
           <div className="pd-v2-pricing-row">
             <div className="pd-v2-price-group">
-              <span className="current">${product.price}</span>
+              <span className="current">₹{product.price}</span>
               {product.discount > 0 && (
                 <>
-                  <span className="original">${originalPrice}</span>
+                  <span className="original">₹{originalPrice}</span>
                   <span className="discount">-{product.discount}% OFF</span>
                 </>
               )}

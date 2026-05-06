@@ -272,7 +272,7 @@ const AdminDashboard = () => {
                       <div style={{fontSize: '0.8rem', fontWeight: '600'}}>{new Date(order.createdAt).toLocaleDateString()}</div>
                       <div style={{fontSize: '0.7rem', color: '#64748b'}}>{new Date(order.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
                     </td>
-                    <td style={{fontWeight: '700'}}>${order.totalPrice.toFixed(2)}</td>
+                    <td style={{fontWeight: '700'}}>₹{order.totalPrice.toFixed(2)}</td>
                     <td>
                       <span className={`status-indicator status-${order.status}`} style={{
                         background: order.status === 'delivered' ? 'rgba(34,197,94,0.1)' : 'rgba(234,179,8,0.1)',

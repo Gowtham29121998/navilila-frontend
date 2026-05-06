@@ -23,6 +23,8 @@ import Profile from './components/Profile/Profile';
 import MyOrders from './components/MyOrders/MyOrders';
 import ResetPassword from './components/Auth/ResetPassword';
 import AllProducts from './components/AllProducts/AllProducts';
+import Terms from './components/Terms/Terms.jsx';
+import Privacy from './components/Terms/Privacy.jsx';
 
 const AppRouter = () => {
   const { userInfo } = useSelector((state) => state.user);
@@ -41,6 +43,8 @@ const AppRouter = () => {
         <Route path="profile" element={<Profile />} />
         <Route path="my-orders" element={<MyOrders />} />
         <Route path="all-products" element={<AllProducts />} />
+        <Route path="terms" element={<Terms />} />
+        <Route path="privacy" element={<Privacy />} />
         <Route path="reset-password/:token" element={<ResetPassword />} />
         <Route path="set-password/:token" element={<ResetPassword />} />
         

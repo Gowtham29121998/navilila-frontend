@@ -89,9 +89,9 @@ const AdminProducts = () => {
                     </td>
                     <td className="name-cell">
                       <strong>{product.name}</strong>
-                      <div className="mobile-only-price">${product.price}</div>
+                      <div className="mobile-only-price">₹{product.price}</div>
                     </td>
-                    <td className="hide-mobile">${product.price}</td>
+                    <td className="hide-mobile">₹{product.price}</td>
                     <td className="hide-mobile">{product.countInStock}</td>
                     <td className="hide-mobile">{product.category?.name || 'N/A'}</td>
                     <td className="hide-mobile">{product.brand || '—'}</td>

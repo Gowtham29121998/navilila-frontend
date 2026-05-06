@@ -71,7 +71,7 @@ const MyOrders = () => {
                     </div>
                     <div className="order-info-block">
                       <span className="order-info-label">Total</span>
-                      <span className="order-info-val">${order.totalPrice.toFixed(2)}</span>
+                      <span className="order-info-val">₹{order.totalPrice.toFixed(2)}</span>
                     </div>
                     <div className="order-info-block">
                       <span className="order-info-label">Order #</span>
@@ -96,7 +96,7 @@ const MyOrders = () => {
                           )}
                         </div>
                       </div>
-                      <div className="order-item-price">${(item.price * item.quantity).toFixed(2)}</div>
+                      <div className="order-item-price">₹{(item.price * item.quantity).toFixed(2)}</div>
                     </div>
                   ))}
                 </div>

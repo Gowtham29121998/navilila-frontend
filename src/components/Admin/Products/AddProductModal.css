@@ -443,3 +443,92 @@
   color: #38bdf8;
   font-size: 0.8rem;
 }
+
+/* CKEditor Custom Dark Theme Styling */
+.apm-editor-container {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.7);
+  transition: all 0.3s ease;
+}
+
+/* Remove all CKEditor default borders */
+.ck.ck-editor__main > .ck-editor__editable,
+.ck.ck-toolbar,
+.ck.ck-button,
+.ck.ck-dropdown__panel,
+.ck.ck-list,
+.ck.ck-editor__top .ck-sticky-panel .ck-toolbar,
+.ck-sticky-panel__content {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.ck-editor__editable {
+  min-height: 250px !important;
+  background-color: transparent !important;
+  color: #fff !important;
+  padding: 15px 25px !important;
+  font-family: 'Inter', sans-serif !important;
+  line-height: 1.6 !important;
+}
+
+/* Make toolbar completely dark */
+.ck.ck-toolbar {
+  background-color: #0f172a !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.ck-button {
+  color: #94a3b8 !important;
+  cursor: pointer !important;
+}
+
+.ck-button:hover {
+  background-color: rgba(56, 189, 248, 0.1) !important;
+  color: #38bdf8 !important;
+}
+
+.ck-button.ck-on {
+  background-color: rgba(56, 189, 248, 0.2) !important;
+  color: #38bdf8 !important;
+}
+
+.ck-dropdown__panel {
+  background-color: #1e293b !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
+}
+
+.ck-list__item, .ck-list {
+  background-color: #1e293b !important;
+}
+
+.ck-list__item:hover {
+  background-color: rgba(56, 189, 248, 0.1) !important;
+}
+
+.ck-list__label {
+  color: #cbd5e1 !important;
+}
+
+/* Fix icons and separators */
+.ck-icon {
+  color: #94a3b8 !important;
+}
+
+.ck-toolbar__separator {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Active/Focused state for the whole container */
+.apm-editor-container:focus-within {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
+}
+
+/* Ensure dropdowns also look dark */
+.ck.ck-list__item .ck-button.ck-on, .ck.ck-list__item .ck-button:hover {
+    background: rgba(56, 189, 248, 0.2) !important;
+}

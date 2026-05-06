@@ -3,6 +3,8 @@ import { useDropzone } from 'react-dropzone';
 import { toast } from 'react-toastify';
 import api from '../../../utils/api';
 import { PlusIcon, UploadIcon, CloseIcon } from '../../../assets/images/icons.jsx';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import './AddProductModal.css';
 
 // Helper to Compress/Resize Image before upload
@@ -304,16 +306,24 @@ const AddProductModal = ({ isOpen, onClose, onRefresh, editingProduct = null }) 
 
               <div className="apm-form-group">
                 <label>Description</label>
-                <textarea 
-                  className="apm-textarea"
-                  value={description} 
-                  onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Tell us about the product..."
-                />
+                <div className="apm-editor-container">
+                  <CKEditor
+                    editor={ClassicEditor}
+                    data={description}
+                    onChange={(event, editor) => {
+                      const data = editor.getData();
+                      setDescription(data);
+                    }}
+                    config={{
+                      placeholder: 'Tell us about the product...',
+                      // Removing specific toolbar to show all default tools
+                    }}
+                  />
+                </div>
               </div>
 
               <div className="apm-form-row">
-                <div className="apm-form-group"><label>Price ($)</label><input type="number" value={price} onChange={(e) => setPrice(e.target.value)} /></div>
+                <div className="apm-form-group"><label>Price (₹)</label><input type="number" value={price} onChange={(e) => setPrice(e.target.value)} /></div>
                 <div className="apm-form-group"><label>Discount (%)</label><input type="number" value={discount} onChange={(e) => setDiscount(e.target.value)} /></div>
               </div>
             </div>

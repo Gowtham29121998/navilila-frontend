@@ -224,7 +224,7 @@ const CartPage = () => {
                       disabled={updating === `${product._id}-${item.selectedColor}`}
                     >+</button>
                   </div>
-                  <p className="cart-item-subtotal">${(product.price * item.quantity).toFixed(2)}</p>
+                  <p className="cart-item-subtotal">₹{(product.price * item.quantity).toFixed(2)}</p>
                   <button
                     className="cart-item-remove"
                     onClick={() => handleRemove(product._id, item.selectedColor)}
