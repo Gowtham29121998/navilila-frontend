@@ -13,6 +13,7 @@ import AdminProducts from './components/Admin/Products/AdminProducts';
 import AdminCategories from './components/Admin/Categories/AdminCategories';
 import AdminUsers from './components/Admin/Users/AdminUsers';
 import AdminOrders from './components/Admin/Orders/AdminOrders';
+import AdminOrderDetail from './components/Admin/Orders/AdminOrderDetail';
 import AdminSettings from './components/Admin/Settings/AdminSettings';
 import AdminCoupons from './components/Admin/Coupons/AdminCoupons';
 import ProductDetails from './components/ProductDetails/ProductDetails';
@@ -53,6 +54,7 @@ const AppRouter = () => {
           <Route index element={<Navigate to="dashboard" replace />} />
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="orders" element={<AdminOrders />} />
+          <Route path="orders/:id" element={<AdminOrderDetail />} />
           <Route path="products" element={<AdminProducts />} />
           <Route path="categories" element={<AdminCategories />} />
           <Route path="users" element={<AdminUsers />} />

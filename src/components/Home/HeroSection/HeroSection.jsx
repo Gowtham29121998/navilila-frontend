@@ -53,7 +53,15 @@ const HeroSection = () => {
     fade: true,
   };
 
-  if (loading) return <div className="hero-loading"></div>;
+  if (loading) return (
+    <div className="hero-skeleton">
+      <div className="skeleton-content">
+        <div className="skeleton-line title"></div>
+        <div className="skeleton-line subtitle"></div>
+        <div className="skeleton-button"></div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="hero-wrapper">

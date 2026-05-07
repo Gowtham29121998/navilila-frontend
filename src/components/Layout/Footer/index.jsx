@@ -57,11 +57,10 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>© 2026 Navinila Elevate. All rights reserved.</p>
+          <p>© 2026 Navinila & Co. All rights reserved.</p>
           <div className="footer-bottom-links">
             <Link to="/privacy">Privacy Policy</Link>
             <Link to="/terms">Terms of Service</Link>
-            <Link to="/cookies">Cookies Settings</Link>
           </div>
         </div>
       </div>

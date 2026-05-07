@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import api from '../../../utils/api';
 import './AdminOrders.css';
 
 const AdminOrders = () => {
+  const navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   
@@ -40,6 +42,10 @@ const AdminOrders = () => {
     } catch (err) {
       toast.error('Failed to update status');
     }
+  };
+
+  const handleOrderClick = (orderId) => {
+    navigate(`/admin/orders/${orderId}`);
   };
 
   // Filter Logic
@@ -131,7 +137,7 @@ const AdminOrders = () => {
             </thead>
             <tbody>
               {filteredOrders.map(order => (
-                <tr key={order._id}>
+                <tr key={order._id} onClick={() => handleOrderClick(order._id)} className="order-row-clickable">
                   <td className="order-id-cell">
                     {order._id.substring(order._id.length - 8).toUpperCase()}
                   </td>
@@ -144,12 +150,9 @@ const AdminOrders = () => {
                     <span>{order.user?.email || 'N/A'}</span>
                   </td>
                   <td className="order-items-cell">
-                    {order.items?.map((item, idx) => (
-                      <div key={idx} className="order-item-summary">
-                        {item.quantity}x {item.name} 
-                        {item.selectedColor && !item.selectedColor.startsWith('#') && <span className="item-color">({item.selectedColor})</span>}
-                      </div>
-                    ))}
+                    <span className="items-count-badge">
+                      {order.items?.reduce((sum, i) => sum + i.quantity, 0)} items
+                    </span>
                   </td>
                   <td className="order-total-cell">₹{order.totalPrice.toFixed(2)}</td>
                   <td>{order.paymentMethod}</td>
@@ -158,7 +161,7 @@ const AdminOrders = () => {
                       {order.status}
                     </span>
                   </td>
-                  <td>
+                  <td onClick={(e) => e.stopPropagation()}>
                     <select
                       className="status-select"
                       value={order.status}

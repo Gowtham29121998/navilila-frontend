@@ -85,7 +85,7 @@ const ProductCard = ({ id, image, name, price = 0, discount = 0 }) => {
     <div className="product-card">
       <div className="product-image-container">
         <Link to={`/product/${id}`} className="product-card-visual-link">
-          <img src={image} alt={name} className="product-image" />
+          <img src={image} alt={name} className="product-image" loading="lazy" />
         </Link>
         <button 
           className={`favorite-btn ${isFavorite ? 'active' : ''}`}
