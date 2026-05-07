@@ -1,6 +1,6 @@
 .category-wrapper {
   padding: 3rem 3rem;
-  background-color: #0f172a;
+  background-color: var(--bg-dark);
   /* Matches your premium dark mode aesthetic */
   font-family: 'Inter', 'Roboto', sans-serif;
 }
@@ -13,7 +13,7 @@
 .category-header h2 {
   font-size: 2rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-primary);
   margin: 0;
 }
 
@@ -41,11 +41,11 @@
 .category-card {
   flex: 0 0 auto;
   width: 280px;
-  background: rgba(30, 41, 59, 0.7);
+  background: var(--bg-card);
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   display: flex;
@@ -80,10 +80,10 @@
   padding: 1.5rem 1rem;
   font-size: 1.15rem;
   font-weight: 600;
-  color: #f8fafc;
+  color: var(--text-primary);
   text-align: center;
   margin: 0;
-  background: rgba(15, 23, 42, 0.5);
+  background: var(--header-bg);
   /* slight contrast for text area */
   flex-grow: 1;
 }

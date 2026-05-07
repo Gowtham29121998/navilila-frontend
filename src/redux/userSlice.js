@@ -2,9 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 
 // Try to get initially from localStorage
 const storedUserInfo = localStorage.getItem('userInfo');
+const storedTheme = localStorage.getItem('theme') || 'dark';
 const initialState = {
   userInfo: storedUserInfo ? JSON.parse(storedUserInfo) : null,
   isAuthenticated: !!storedUserInfo,
+  theme: storedTheme,
 };
 
 const userSlice = createSlice({
@@ -28,6 +30,10 @@ const userSlice = createSlice({
         localStorage.setItem('userInfo', JSON.stringify(state.userInfo));
       }
     },
+    updateTheme: (state, action) => {
+      state.theme = action.payload;
+      localStorage.setItem('theme', action.payload);
+    },
     logout: (state) => {
       state.userInfo = null;
       state.isAuthenticated = false;
@@ -36,5 +42,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, logout, setCart, setFavorites } = userSlice.actions;
+export const { setUser, logout, setCart, setFavorites, updateTheme } = userSlice.actions;
 export default userSlice.reducer;

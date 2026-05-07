@@ -13,7 +13,7 @@
   height: 60vh;
   overflow: hidden;
   border-radius: 24px;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--card-shadow);
 }
 
 /* Scope ALL slick overrides to hero specifically */
@@ -37,7 +37,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #0f172a;
+  background-color: var(--bg-slate);
   filter: brightness(0.75);
   transition: transform 5s ease;
 }
@@ -140,10 +140,10 @@
   width: 54px;
   height: 54px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-card);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: white;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,9 +153,9 @@
 }
 
 .hero-wrapper .hero-arrow:hover {
-  background: rgba(56, 189, 248, 0.2);
-  border-color: #38bdf8;
-  color: #38bdf8;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
   box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
 }
 

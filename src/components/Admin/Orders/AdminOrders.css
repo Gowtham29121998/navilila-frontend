@@ -1,8 +1,8 @@
 .admin-orders-page {
   min-height: 100vh;
-  background: #0f172a;
+  background: var(--bg-dark);
   padding: 40px 5% 80px;
-  color: #f8fafc;
+  color: var(--text-primary);
   font-family: 'Inter', sans-serif;
 }
 
@@ -29,7 +29,7 @@
 .order-tabs {
   display: flex;
   gap: 0.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 1.5rem;
   overflow-x: auto;
   scrollbar-width: none;
@@ -43,7 +43,7 @@
   padding: 0.75rem 1.5rem;
   background: transparent;
   border: none;
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-weight: 600;
   cursor: pointer;
   position: relative;
@@ -52,7 +52,7 @@
 }
 
 .order-tab:hover {
-  color: #f8fafc;
+  color: var(--text-primary);
 }
 
 .order-tab.active {
@@ -75,10 +75,10 @@
   gap: 1rem;
   margin-bottom: 2rem;
   align-items: flex-end;
-  background: rgba(30, 41, 59, 0.4);
+  background: var(--bg-card);
   padding: 1.5rem;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
   flex-wrap: wrap;
 }
 
@@ -91,15 +91,15 @@
 .filter-group label {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #94a3b8;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .filter-group input {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #f8fafc;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
   padding: 0.75rem 1rem;
   border-radius: 8px;
   outline: none;
@@ -112,9 +112,9 @@
 }
 
 .react-datepicker__input-container input {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #f8fafc;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
   padding: 0.75rem 1rem;
   border-radius: 8px;
   outline: none;
@@ -126,19 +126,19 @@
 }
 
 .react-datepicker {
-  background-color: #1e293b !important;
-  border: 1px solid rgba(56, 189, 248, 0.3) !important;
-  color: #f8fafc !important;
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--accent) !important;
+  color: var(--text-primary) !important;
   font-family: 'Inter', sans-serif !important;
 }
 
 .react-datepicker__header {
-  background-color: #0f172a !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background-color: var(--bg-dark) !important;
+  border-bottom: 1px solid var(--border-color) !important;
 }
 
 .react-datepicker__current-month {
-  color: #f8fafc !important;
+  color: var(--text-primary) !important;
 }
 
 .react-datepicker__day-name {
@@ -191,13 +191,14 @@
 }
 
 .filter-clear-btn:hover {
-  background: rgba(239, 68, 68, 0.2);
+  background: #ef4444;
+  color: #fff;
 }
 
 /* Table */
 .orders-table-wrapper {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   overflow-x: auto;
   backdrop-filter: blur(12px);
@@ -213,16 +214,16 @@
 .orders-table td {
   padding: 1.25rem 1.5rem;
   text-align: left;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .orders-table th {
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 700;
-  background: rgba(15, 23, 42, 0.4);
+  background: var(--header-bg);
 }
 
 .orders-table tbody tr {
@@ -230,7 +231,7 @@
 }
 
 .orders-table tbody tr:hover {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-input);
 }
 
 .order-id-cell {
@@ -241,12 +242,12 @@
 
 .order-user-cell div {
   font-weight: 600;
-  color: #f8fafc;
+  color: var(--text-primary);
 }
 
 .order-user-cell span {
   font-size: 0.8rem;
-  color: #64748b;
+  color: var(--text-secondary);
 }
 
 .order-total-cell {
@@ -296,9 +297,9 @@
 
 /* Status Update Select */
 .status-select {
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #f8fafc;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
   padding: 0.5rem;
   border-radius: 6px;
   outline: none;
@@ -312,7 +313,7 @@
 }
 
 .status-select option {
-  background: #0f172a;
+  background: var(--bg-dark);
 }
 
 .order-items-cell {
@@ -339,7 +340,7 @@
 
 .order-item-summary {
   font-size: 0.85rem;
-  color: #e2e8f0;
+  color: var(--text-secondary);
   margin-bottom: 4px;
 }
 

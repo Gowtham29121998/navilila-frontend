@@ -1,8 +1,8 @@
 .admin-dashboard-page {
   min-height: 100vh;
-  background: #0f172a;
+  background: var(--bg-dark);
   padding: 40px 5% 80px;
-  color: #f8fafc;
+  color: var(--text-primary);
   font-family: 'Inter', sans-serif;
 }
 
@@ -37,9 +37,9 @@
 }
 
 .stat-card {
-  background: rgba(30, 41, 59, 0.4);
+  background: var(--bg-card);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
   border-radius: 24px;
   padding: 1.5rem;
   display: flex;
@@ -50,7 +50,7 @@
 
 .stat-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(56, 189, 248, 0.3);
+  border-color: var(--accent);
 }
 
 .stat-icon {
@@ -65,7 +65,7 @@
 
 .stat-info h3 {
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 0.25rem;
@@ -74,14 +74,14 @@
 .stat-info p {
   font-size: 1.75rem;
   font-weight: 800;
-  color: #f8fafc;
+  color: var(--text-primary);
 }
 
 /* Chart Section */
 .chart-section {
-  background: rgba(30, 41, 59, 0.4);
+  background: var(--bg-card);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
   border-radius: 24px;
   padding: 2rem;
   margin-bottom: 2.5rem;
@@ -97,7 +97,7 @@
 .chart-header h2 {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #f8fafc;
+  color: var(--text-primary);
 }
 
 .chart-container {
@@ -119,9 +119,9 @@
 }
 
 .dashboard-card {
-  background: rgba(30, 41, 59, 0.4);
+  background: var(--bg-card);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-color);
   border-radius: 24px;
   padding: 1.5rem;
 }
@@ -161,7 +161,7 @@
 
 .mini-table td {
   padding: 1rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--border-color);
   font-size: 0.9rem;
 }
 

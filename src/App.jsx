@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AppRouter from './AppRouter';
@@ -30,6 +31,12 @@ function App() {
 
     validateSession();
   }, []);
+
+  // Theme Sync
+  const theme = useSelector((state) => state.user.theme);
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme || 'dark');
+  }, [theme]);
 
   return (
     <div>

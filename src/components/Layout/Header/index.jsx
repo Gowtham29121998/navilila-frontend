@@ -6,13 +6,14 @@ import { logout } from '../../../redux/userSlice';
 import SignUpModal from '../../commonComponents/SignUpModal/SignUpModal.jsx';
 import logoIcon from '../../../assets/logoIcon.png';
 import logoName from '../../../assets/logoName.png';
-import { MenuIcon, CartIcon, CloseIcon } from '../../../assets/images/icons.jsx';
+import { MenuIcon, CartIcon, CloseIcon, SunIcon, MoonIcon } from '../../../assets/images/icons.jsx';
+import { updateTheme } from '../../../redux/userSlice';
 import './Header.css';
 
 const Header = () => {
   const isOpen = useSelector((state) => state.navigation.isOpen);
   const isAuthModalOpen = useSelector((state) => state.navigation.isAuthModalOpen);
-  const { isAuthenticated, userInfo } = useSelector((state) => state.user);
+  const { isAuthenticated, userInfo, theme } = useSelector((state) => state.user);
   const isAdmin = isAuthenticated && userInfo?.role === 'ADMIN';
   const dispatch = useDispatch();
 
@@ -23,6 +24,11 @@ const Header = () => {
   const handleLogout = () => {
     dispatch(logout());
     dispatch(toggleAuthModal(false));
+  };
+
+  const handleThemeToggle = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    dispatch(updateTheme(newTheme));
   };
 
   return (
@@ -73,6 +79,10 @@ const Header = () => {
               )}
             </Link>
           )}
+
+          <button className="theme-toggle-btn" onClick={handleThemeToggle} aria-label="Toggle Theme">
+            {theme === 'light' ? <MoonIcon size={22} /> : <SunIcon size={22} />}
+          </button>
 
           <div className="header-user">
             {isAuthenticated ? (

@@ -14,7 +14,7 @@
 }
 
 .modal-container {
-  background: #1e293b;
+  background: var(--bg-card);
   width: 90%;
   max-width: 420px;
   max-height: 90vh;
@@ -22,10 +22,10 @@
   border-radius: 20px;
   padding: 2.5rem 2rem;
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
   animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  color: #fff;
+  color: var(--text-primary);
 }
 
 /* Hide scrollbar for cleaner look but keep functionality */
@@ -55,7 +55,7 @@
 }
 
 .modal-close:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--accent);
   color: #fff;
   transform: rotate(90deg);
 }
@@ -95,7 +95,7 @@
 }
 
 .modal-header p {
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 0.95rem;
   margin: 0;
 }
@@ -115,15 +115,15 @@
 .form-group label {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #cbd5e1;
+  color: var(--text-secondary);
 }
 
 .form-group input {
   padding: 0.8rem 1rem;
   border-radius: 10px;
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
   font-size: 1rem;
   font-family: inherit;
   transition: all 0.3s ease;
@@ -205,7 +205,7 @@
 }
 
 .back-btn:hover {
-  color: #fff;
+  color: var(--accent);
 }
 
 @keyframes fadeIn {
@@ -239,7 +239,7 @@
 }
 
 .timer-text {
-  color: #94a3b8;
+  color: var(--text-secondary);
 }
 
 .resend-btn {
@@ -260,7 +260,7 @@
 .toggle-mode-text {
   text-align: center;
   font-size: 0.9rem;
-  color: #94a3b8;
+  color: var(--text-secondary);
   margin-top: 0.5rem;
 }
 

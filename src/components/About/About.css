@@ -1,5 +1,5 @@
 .about-container {
-  color: #fff;
+  color: var(--text-primary);
   padding: 4rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -23,7 +23,7 @@
 
 .about-header p {
   font-size: 1.25rem;
-  color: #94a3b8;
+  color: var(--text-secondary);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
@@ -34,11 +34,11 @@
   gap: 4rem;
   align-items: center;
   margin-bottom: 6rem;
-  background: rgba(15, 23, 42, 0.6);
+  background: var(--bg-card);
   padding: 3rem;
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
 }
 
 .mission-text {
@@ -48,12 +48,12 @@
 .mission-text h2 {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  color: #f8fafc;
+  color: var(--text-primary);
 }
 
 .mission-text p {
   font-size: 1.1rem;
-  color: #cbd5e1;
+  color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: 1rem;
 }
@@ -84,7 +84,7 @@
 .about-team h2 {
   font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: #f8fafc;
+  color: var(--text-primary);
 }
 
 .team-grid {
@@ -94,8 +94,8 @@
 }
 
 .team-member {
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   padding: 2rem;
   border-radius: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -104,8 +104,8 @@
 
 .team-member:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(129, 140, 248, 0.15);
-  border-color: rgba(129, 140, 248, 0.3);
+  box-shadow: var(--card-shadow);
+  border-color: var(--accent);
 }
 
 .team-avatar {
@@ -128,7 +128,7 @@
 .team-info h3 {
   font-size: 1.25rem;
   margin: 0 0 0.5rem 0;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .team-info p {
@@ -141,7 +141,7 @@
 }
 
 .team-info .bio {
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.5;
   text-transform: none;

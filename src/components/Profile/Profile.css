@@ -1,8 +1,8 @@
 .profile-page {
   min-height: 100vh;
-  background: #0f172a;
+  background: var(--bg-dark);
   padding: 40px 5% 80px;
-  color: #f8fafc;
+  color: var(--text-primary);
   font-family: 'Inter', sans-serif;
 }
 
@@ -18,12 +18,12 @@
 .profile-header h1 {
   font-size: 2rem;
   font-weight: 700;
-  color: #f8fafc;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .profile-header p {
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 1rem;
 }
 
@@ -40,8 +40,8 @@
 }
 
 .profile-sidebar {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 24px;
   padding: 2rem;
   display: flex;
@@ -128,18 +128,18 @@
 
 .profile-info-display h3 {
   font-size: 1.25rem;
-  color: #f8fafc;
+  color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
 
 .profile-info-display p {
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 0.875rem;
 }
 
 .profile-form-card {
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(56, 189, 248, 0.15);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 24px;
   padding: 30px;
   backdrop-filter: blur(12px);
@@ -179,17 +179,17 @@
 .profile-form-group label {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #94a3b8;
+  color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.8px;
 }
 
 .profile-form-group input,
 .profile-form-group select {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
-  color: #fff;
+  color: var(--text-primary);
   padding: 12px 16px;
   font-size: 0.9rem;
   outline: none;
@@ -266,8 +266,8 @@
 
 /* Security Card Premium Styles */
 .security-card-premium {
-  background: rgba(30, 41, 59, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 20px;
   padding: 24px;
   display: flex;
@@ -277,8 +277,8 @@
 }
 
 .security-card-premium:hover {
-  background: rgba(30, 41, 59, 0.6);
-  border-color: rgba(56, 189, 248, 0.2);
+  background: var(--bg-input);
+  border-color: var(--accent);
 }
 
 .security-visual {
@@ -316,20 +316,20 @@
 .security-text strong {
   display: block;
   font-size: 1.1rem;
-  color: #f8fafc;
+  color: var(--text-primary);
   margin-bottom: 4px;
 }
 
 .security-text p {
   font-size: 0.9rem;
-  color: #94a3b8;
+  color: var(--text-secondary);
   margin: 0;
 }
 
 .password-change-trigger {
-  background: rgba(255, 255, 255, 0.05);
-  color: #f8fafc;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-input);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
   padding: 10px 20px;
   border-radius: 10px;
   font-weight: 600;
@@ -349,9 +349,9 @@
 
 /* Premium Modal Enhancements */
 .premium-modal {
-  background: #1e293b !important;
-  border: 1px solid rgba(56, 189, 248, 0.2) !important;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: var(--card-shadow) !important;
 }
 
 .modal-header-simple {
@@ -361,11 +361,11 @@
 .modal-header-simple h3 {
   font-size: 1.5rem;
   margin-bottom: 4px;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .modal-header-simple p {
-  color: #94a3b8;
+  color: var(--text-secondary);
   margin: 0;
 }
 

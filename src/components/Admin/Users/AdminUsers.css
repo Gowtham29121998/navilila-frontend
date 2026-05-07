@@ -1,8 +1,8 @@
 .admin-users-page {
   min-height: 100vh;
-  background: #0f172a;
+  background: var(--bg-dark);
   padding: 40px 5% 80px;
-  color: #f8fafc;
+  color: var(--text-primary);
   font-family: 'Inter', sans-serif;
 }
 
@@ -22,14 +22,14 @@
 }
 
 .admin-users-header p {
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 1rem;
 }
 
 /* Table */
 .users-table-wrapper {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   overflow-x: auto;
   backdrop-filter: blur(12px);
@@ -45,16 +45,16 @@
 .users-table td {
   padding: 1.25rem 1.5rem;
   text-align: left;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .users-table th {
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 700;
-  background: rgba(15, 23, 42, 0.4);
+  background: var(--header-bg);
 }
 
 .users-table tbody tr {
@@ -62,7 +62,7 @@
 }
 
 .users-table tbody tr:hover {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-input);
 }
 
 .user-profile-cell {
@@ -93,12 +93,12 @@
 
 .user-info-text div {
   font-weight: 600;
-  color: #f8fafc;
+  color: var(--text-primary);
 }
 
 .user-info-text span {
   font-size: 0.8rem;
-  color: #94a3b8;
+  color: var(--text-secondary);
 }
 
 /* User vs Admin Tag Dropdown */
@@ -128,8 +128,8 @@
 }
 
 .role-select option {
-  background: #0f172a;
-  color: #f8fafc;
+  background: var(--bg-dark);
+  color: var(--text-primary);
 }
 
 .role-select:focus {

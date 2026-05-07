@@ -1,7 +1,7 @@
 .recent-wrapper {
   padding: 2rem 3rem;
   /* slightly less top padding so it flows nicely from categories */
-  background-color: #0f172a;
+  background-color: var(--bg-dark);
   font-family: 'Inter', 'Roboto', sans-serif;
 }
 
@@ -15,7 +15,7 @@
 .recent-header h2 {
   font-size: 2rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--text-primary);
   margin: 0;
 }
 

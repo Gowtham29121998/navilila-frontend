@@ -1,8 +1,8 @@
 .my-orders-page {
   min-height: 100vh;
-  background: #0f172a;
+  background: var(--bg-dark);
   padding: 40px 5% 80px;
-  color: #f8fafc;
+  color: var(--text-primary);
   font-family: 'Inter', sans-serif;
 }
 
@@ -22,16 +22,16 @@
 }
 
 .my-orders-header p {
-  color: #94a3b8;
+  color: var(--text-secondary);
   font-size: 1rem;
 }
 
 .orders-empty {
   text-align: center;
   padding: 4rem 2rem;
-  background: #0f172a;
+  background: var(--bg-dark);
   border-radius: 16px;
-  border: 1px dashed #334155;
+  border: 1px dashed var(--border-color);
   margin-top: 2rem;
 }
 
@@ -44,12 +44,12 @@
 
 .orders-empty h3 {
   font-size: 1.5rem;
-  color: #f8fafc;
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
 .orders-empty p {
-  color: #94a3b8;
+  color: var(--text-secondary);
   margin-bottom: 2rem;
 }
 
@@ -76,20 +76,20 @@
 }
 
 .order-card {
-  background: rgba(30, 41, 59, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 24px;
   overflow: hidden;
   backdrop-filter: blur(12px);
   transition: all 0.3s;
 }
 
-.order-card:hover { border-color: rgba(56, 189, 248, 0.2); }
+.order-card:hover { border-color: var(--accent); }
 
 .order-card-header {
   padding: 20px 24px;
-  background: rgba(15, 23, 42, 0.5);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -111,14 +111,14 @@
 .order-info-label {
   font-size: 0.75rem;
   text-transform: uppercase;
-  color: #64748b;
+  color: var(--text-secondary);
   font-weight: 600;
   letter-spacing: 0.05em;
 }
 
 .order-info-val {
   font-size: 0.95rem;
-  color: #f8fafc;
+  color: var(--text-primary);
 }
 
 .order-status-badge {
@@ -149,7 +149,7 @@
   align-items: center;
   gap: 16px;
   padding-bottom: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .order-item-row:last-child {
@@ -162,13 +162,13 @@
   height: 60px;
   border-radius: 8px;
   object-fit: cover;
-  background: #1e293b;
+  background: var(--bg-input);
 }
 
 .order-item-details { flex: 1; min-width: 0; }
 .order-item-name {
   font-weight: 600;
-  color: #f8fafc;
+  color: var(--text-primary);
   margin-bottom: 4px;
   white-space: nowrap;
   overflow: hidden;
@@ -183,7 +183,7 @@
 
 .order-item-qty {
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: var(--text-secondary);
 }
 
 .order-item-color {
@@ -203,8 +203,8 @@
 
 .order-card-footer {
   padding: 16px 24px;
-  background: rgba(15, 23, 42, 0.4);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--header-bg);
+  border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: flex-end;
 }
